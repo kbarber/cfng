@@ -1,0 +1,117 @@
+=============
+INSTALL: cfng
+=============
+$Id$
+
+DISCLAIMER: This is a technology preview of cfng and information in this
+document might be incomplete.
+
+Standard install steps::
+
+    ./configure \
+        --prefix=/usr/local \
+        --with-berkeleydb=/usr/local/BerkeleyDB4.1 \
+        --with-openssl=/usr/local/openssl-0.9.7c 
+
+The default location where cfng will look for it's own configuration
+files and write data, lock and log files is under::
+
+    /var/cfng
+
+This can be changed with (example)::
+
+    --with-workdir=/cfng
+
+Note that on most platforms cfng binaries are able to use libraries copied
+to WORKDIR/lib/ instead of the default library search paths.
+
+Below is included information about the cfng default locations
+
+
+cfng locations: summary
+=======================
+
+This document describes the default file-system locations for cfng (which
+is somewhat different from cfengine, if you have a previous installation
+with this). The changes in cfng were made to:
+
+1. Make naming more descriptive of the files and directories functions.
+
+2. Prevent variable data from being written to locations higher up in
+   the file system hierarchy than more static files, such as binaries
+   and semi-static configuration files.
+
+The default location for cfng related files is ``/var/cfng``. This can be
+over-ridden with the ``--with-workdir` argument to ``configure`` at
+compile time. 
+
+::
+  /var/cfng
+    bin/                    [empty]
+    data/                   [optional]
+    inputs/
+    keys/
+    lib/                    [optional]
+    logs/
+    modules/                [empty]
+    methods/                [empty]
+    outputs/
+    spool/                  [optional]
+    state/
+
+- bin:
+  The primary use for this is as the location where ``cfexecd`` looks for
+  ``cfagent``. You could chose to store all the cfng binaries here to be
+  consistent (see cfng_container.txt).
+
+- data: [optional]
+  This optional directory is the client side store for files and
+  directories, which are copied from a centralized location. (This could
+  be by means of cfservd or other methods, such as rsync or cvsup).
+  The name is arbitrary (it is not actually used by cfng binaries) and could
+  just as well be ``dist``, ``templates`` or ``sources``.
+
+- inputs:
+  This is the primary location for files parsed for cfng binaries,
+  notably ``cfagent.conf``, ``cfservd.conf`` and ``update.conf``.
+  Additional information and recommendations for content and structure 
+  of this directory can be found in cfng_inputs.txt.
+
+- keys:
+  The ``keys`` directory contains the public / private key pair used in
+  communications between ``cfagent`` and ``cfservd``. For ``cfservd``
+  the public keys for clients allowed to communicate with the daemon
+  need to be stored in this directory.
+
+- lib: [optional]
+  cfng is compiled with a runtime path pointing to /var/cfng/lib. This
+  allow you to contain libraries (libdb and libcrypto in particular), so
+  that system wide modifications doesn't impact cfng's ability to
+  operate properly.
+
+- logs:
+  Note that the primary log output for cfng binaries is syslog, so the
+  logs directory is currently only for the lock and setuid logs.
+
+- modules:
+  Location for cfagent modules. These need to be called:
+  module:<modulename>.
+
+- methods:
+  Location for cfagent methods.
+
+- outputs:
+  This contains spooled output files that are normally emailed to the 
+  system administrator.
+
+- spool: [optional]
+  You can have backup copies for changed files stored in this directory
+  by setting ``Repository = ( /var/cfng/spool )``. Dated filenames are
+  default for everything except the copy action, where you enable
+  this with ``backup=timestamp``
+
+- state:
+  The state directory contains all of the internal state data for cfng
+  binaries, such as the checksum databases (action -> file ->
+  checksums), cfenvd's data-files and the lock file databases.
+

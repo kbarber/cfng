@@ -1,0 +1,33 @@
+=============
+AUTHORS: cfng
+=============
+
+cfengine - development and contributions
+----------------------------------------
+
+- Mark Burgess (mark.burgess@iu.hio.no) / author and maintainer of
+  cfengine (http://www.cfengine.org)
+
+- David Masterson (david.masterson@kla-tencor.com), Bas van der Vlies,
+  Bjorn Gustafson, Jorgen Kjensli, Bryan S. Blank, Demosthenes
+  Skipitaris, Goran Oberg, Sigmund Straumsnes, Hårek Haugerud, Andrew
+  Mayhew (amayhew@icewire.com), Jochen Reinwand
+  (Jochen.Reinwand@lau-net.de), Andreas Klussman, Allan L. Bazinet,
+  Steve Rader (rader@hep.wisc.edu), Andrew Stribblehill, Morten
+  Hermanrud (mhe@say.no), Stuart Sharpe.
+
+Note to cfengine contributors
+-----------------------------
+
+As part of a general code clean-up and restructuring effort of the
+cfengine code, many of the direct references to authors in the code
+has been removed. If you want explicit credits for a particular 
+contribution, we can facilitate that by either doing so in this file
+or at the top of the source file(s) in question. Please contact me
+(skaar@waste.org) directly for this. The same goes for inclusion
+in the above list.
+
+cfng - development and contributions
+------------------------------------
+
+- Kent Skaar (skaar@waste.org), Luke Kanies (luke@madstop.com)

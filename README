@@ -1,0 +1,43 @@
+============
+README: cfng
+============
+
+DISCLAIMER: This is a technology preview. Due to the extensive amount
+of updates to the original cfengine code, chances are that we have 
+introduced issues that don't affect GNU cfengine. This release is
+functionally equivalent to cfengine 2.1.6, mostly with changes to
+the WORKDIR directory structure and some minor adjustments to a few 
+actions. See ChangeLog for details. At this point standard cfengine
+configurations should be compatible with cfng.
+
+cfng is a framework for configuration management and to a large extent
+based on a fork of GNU cfengine (http://www.cfengine.org), a suite of
+tools to define systems and execute system administration tasks. We 
+want to bring the code base to a state where collaboration is easier
+and continuous development and maintenance is spread to more than just
+the main developer.
+
+The project is not affiliated with the main cfengine developer, Mark
+Burgess or the general GNU cfengine project, but it is our intention to
+feed back any improvements or fixes that we find to cfengine.
+
+Mark has made enormous contributions to the field of automation and
+system administration over the years and cfng builds entirely on code
+that he engineered, but we are in disagreement on the state of the code,
+inconsistencies in it, lack of version control, and the general
+structure.
+
+Any issues with cfng should be reported to us and users are discouraged
+to bring these to the main cfengine channels. Mark Burgess and other 
+cfengine developers are not in any way responsible for this code and have
+explicitly stated that cfng is not something that is of interest to him.
+
+However, the cfengine tutorial and manual is currently the best source
+for information about how to configure and run cfng. This will be
+addressed in the future when the initial work has stabilized. For now
+cfng is a drop in replacement for cfengine and has 100% feature overlap.
+
+cfng is developed and maintained by Kent Skaar and Luke Kanies. Issue
+tracker and mailing lists are available at:
+
+    http://cfng.tigris.org

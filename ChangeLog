@@ -1,0 +1,72 @@
+===============
+ChangeLog: cfng
+===============
+
+------------------------
+cfng 0.1.1 (2004-05-26)
+------------------------
+
+This initial release of cfng primarily intorduce changes to the names
+and directory structures under /var/cfng (or WORKDIR). A great deal of
+internal code cleanup also went into this release, an effort that is
+ongoing and isn't expected to be completed for another couple of
+versions.
+
+A complete set of documentation is forthcoming after we have got around
+to review the GNU cfengine reference and tutorial, and will initially be
+made avalable at: http://cfng.org.
+
+Changes
+~~~~~~~
+    * FuzzyHostMatch updated (internal / item.c / from cfengine-2.1.5)
+    * Rename: checksum.db > WORKDIR/state/cfng_checksum.db.
+    * Rename: cfengine_lock_db > WORKDIR/state/cfng_lock.db.
+    * Location: "lockdir" defaults to WOKRDIR/state.
+    * Location: "logdir" defaults to WORKDIR/log.
+    * Rename: runlog -> log/cfng_lock.log.
+    * Rename: cfagent.<host>.log -> log/cfng_setuid.log.
+    * Merge: cfengine-2.1.6 (includes ReturnsZero bugfix, wait
+      fixes for spawned processes, Darwin network stuff and
+      DPKG package management (see ChangeLog.cfengine).
+    * Cleanup: recursive reformat of printf-like statements that
+      exceeded a standard 80 character width terminal.
+    * Cleanup: functions: f() -> f(void), type *f -> type * f.
+    * SetSignal: Set up global signal datastructure before.
+    * resolve: Don't add "domain undefined.domain" if domain is not
+      set.
+    * home directive fix (from help-cfengine/aw@osn.de)
+    * Rename: cf_ -> cfenvd_ in WORKDIR/state/.
+    * Variables: set global.ipv4[if] even if if IP doesn't resolve.
+    * Build: Initial support for -rpath/-R with RUNTIME_LDFLAGS to
+      look for libraries in WORKDIR/lib.
+    * Merge: cfengine-2.1.7 snapshot up to 2004-05-25.
+
+-----------------------
+cfng 0.1.0 (no release)
+-----------------------
+
+Changes from cfengine 2.1.3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    * ANSI C function prototypes.
+    * Global variables renaming: VARIABLE -> g_variable.
+    * Constants renaming from lowercase to uppercase: bufsize ->
+      BUFSIZE.
+    * Source reformatting to be closer to other ANSI C projects (Styles
+      taken from Kernigahn/Pike, OpenBSD, Linux kernel, Stevens).
+    * Merge of changes from cfengine 2.1.4.
+    * Deleted documentation from source tree.
+    * Rename of distribution from cfengine to cfng.
+    * Removal of ARGLIST macro's from prototypes.h
+    * Cleanup of tabs and trailing white-spaces in source files.
+    * Import of sources to Subversion.
+    * Addition of svn keywords, ala RCS style Id.
+    * bzero/memset macro replaced with real memset call.
+    * GPL/Copyright noticed updated to reflect cfng fork.
+
+Bug fixes:
+~~~~~~~~~~
+    * cfagent.c: double DeleteParser() call introduced in cfengine
+      2.1.4. Caused cfagent to segfault when update.conf was missing.
+    * cfagent.c: cfargv[0] was left over as "cfengine", changed to
+      "cfagent".
+
